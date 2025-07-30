@@ -1,0 +1,69 @@
+.mobile-menu-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #00732E;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: #005a24;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-content {
+  flex: 1;
+  margin-left: 240px;
+  transition: margin-left 0.3s ease-in-out;
+  
+  &--collapsed {
+    margin-left: 60px;
+  }
+  
+  @media (max-width: 768px) {
+    margin-left: 0;
+    padding-top: 80px;  
+    
+    &--collapsed {
+      margin-left: 0;
+    }
+  }
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}

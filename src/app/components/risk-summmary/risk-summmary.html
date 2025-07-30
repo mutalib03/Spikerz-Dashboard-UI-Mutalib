@@ -1,0 +1,75 @@
+
+
+<div class="risk-summary">
+  <h3 class="risk-summary__title">
+    {{ getTranslatedText('risk.summary.title', riskSummaryData.title) }}
+  </h3>
+
+  <div class="risk-summary__content">
+    
+    <div class="risk-summary__chart">
+      <div class="risk-summary__donut-container">
+        <svg 
+          class="risk-summary__donut" 
+          width="120" 
+          height="120" 
+          viewBox="0 0 120 120"
+          role="img"
+          [attr.aria-label]="getTranslatedText('chart.aria.label', 'Risk distribution chart showing ' + riskSummaryData.criticalCount + ' critical risks out of ' + riskSummaryData.totalCount + ' total')"
+        >
+         
+          <circle
+            cx="60"
+            cy="60"
+            r="45"
+            fill="none"
+            stroke="#F3F4F6"
+            stroke-width="10"
+            class="risk-summary__donut-background"
+          />
+          
+          
+          <circle
+            cx="60"
+            cy="60"
+            r="45"
+            fill="none"
+            [attr.stroke]="getDonutStrokeColor()"
+            stroke-width="10"
+            stroke-linecap="round"
+            [attr.stroke-dasharray]="getDonutStrokeDasharray()"
+            stroke-dashoffset="70.5"
+            transform="rotate(-90 60 60)"
+            class="risk-summary__donut-progress"
+          />
+        </svg>
+        
+
+        <div class="risk-summary__center-count">
+          <span class="risk-summary__count-number">{{ riskSummaryData.criticalCount }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="risk-summary__legend">
+      <ul class="risk-summary__legend-list" role="list">
+        <li 
+          *ngFor="let riskCount of riskSummaryData.riskCounts; trackBy: trackByRiskLevel" 
+          class="risk-summary__legend-item"
+          role="listitem"
+        >
+          <div class="risk-summary__legend-indicator">
+            <span 
+              class="risk-summary__legend-dot"
+              [style.background-color]="riskCount.color"
+              [attr.aria-hidden]="true"
+            ></span>
+            <span class="risk-summary__legend-count">{{ riskCount.count }}</span>
+            <span class="risk-summary__legend-label">{{ getRiskLabelText(riskCount) }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

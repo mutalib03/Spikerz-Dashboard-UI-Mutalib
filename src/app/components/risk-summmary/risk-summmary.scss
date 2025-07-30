@@ -1,0 +1,173 @@
+/* risk-summary.component.scss - With Actual Values */
+.risk-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__title {
+    font-size: 1.125rem; // 18px
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__chart {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__donut-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__donut {
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  &__donut-background {
+    transition: stroke 0.3s ease;
+  }
+
+  &__donut-progress {
+    transition: stroke-dasharray 0.3s ease, stroke 0.3s ease;
+  }
+
+  &__center-count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__count-number {
+    font-size: 1.875rem; // 30px
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1;
+  }
+
+  &__legend {
+    margin-top: 4px;
+  }
+
+  &__legend-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__legend-item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__legend-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__legend-count {
+    font-size: 0.875rem; // 14px
+    font-weight: 600;
+    color: #0f172a;
+    min-width: 20px;
+    text-align: right;
+  }
+
+  &__legend-label {
+    font-size: 0.875rem; // 14px
+    color: #475569;
+    text-transform: capitalize;
+  }
+
+  @media (max-width: 1024px) {
+    &__content {
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+
+    &__chart {
+      flex-shrink: 0;
+    }
+
+    &__legend {
+      flex: 1;
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__content {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__donut {
+      width: 100px;
+      height: 100px;
+    }
+
+    &__count-number {
+      font-size: 1.5rem; // 24px
+    }
+
+    &__legend-list {
+      gap: 8px;
+    }
+
+    &__legend-indicator {
+      gap: 6px;
+    }
+
+    &__legend-dot {
+      width: 8px;
+      height: 8px;
+    }
+
+    &__legend-count,
+    &__legend-label {
+      font-size: 0.75rem; // 12px
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 16px;
+
+    &__content {
+      gap: 16px;
+    }
+
+    &__donut {
+      width: 80px;
+      height: 80px;
+    }
+
+    &__count-number {
+      font-size: 1.25rem; // 20px
+    }
+  }
+}

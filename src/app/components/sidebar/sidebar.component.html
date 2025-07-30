@@ -1,0 +1,140 @@
+<aside 
+  class="sidebar" 
+  [class.sidebar--collapsed]="isCollapsed"
+  role="navigation"
+  [attr.aria-label]="getLabel('navigation.main')"
+>
+ 
+  <header class="sidebar__header">
+    <button 
+      class="sidebar__toggle"
+      (click)="onToggleSidebar()"
+      [attr.aria-label]="getLabel('navigation.toggle')"
+      [attr.aria-expanded]="!isCollapsed"
+      type="button"
+    >
+      <svg 
+        class="sidebar__toggle-icon" 
+        width="16" 
+        height="16" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path 
+          [attr.d]="isCollapsed ? 'M9 18l6-6-6-6' : 'M15 18l-6-6 6-6'" 
+          stroke="currentColor" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </header>
+
+ 
+  <nav class="sidebar__nav" role="navigation">
+    <ul class="sidebar__nav-list" role="list">
+      <li 
+        *ngFor="let item of navigationItems" 
+        class="sidebar__nav-item"
+        role="listitem"
+      >
+        <button
+          class="sidebar__nav-link"
+          [class.sidebar__nav-link--active]="item.isActive"
+          (click)="onNavigationItemClick(item)"
+          [attr.aria-label]="getItemLabel(item.translationKey)"
+          [attr.aria-current]="item.isActive ? 'page' : null"
+          type="button"
+        >
+          <img 
+            [src]="getIconPath(item.icon)" 
+            [alt]="getItemLabel(item.translationKey)"
+            class="sidebar__nav-icon"
+            aria-hidden="true"
+          >
+          <span 
+            class="sidebar__nav-text" 
+            [class.sidebar__nav-text--hidden]="isCollapsed"
+          >
+            {{ getItemLabel(item.translationKey) }}
+          </span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <footer class="sidebar__footer">
+    
+    <nav class="sidebar__bottom-nav" role="navigation">
+      <ul class="sidebar__nav-list" role="list">
+        <li 
+          *ngFor="let item of bottomNavigationItems" 
+          class="sidebar__nav-item"
+          role="listitem"
+        >
+          <button
+            class="sidebar__nav-link"
+            [class.sidebar__nav-link--active]="item.isActive"
+            (click)="onNavigationItemClick(item)"
+            [attr.aria-label]="getItemLabel(item.translationKey)"
+            [attr.aria-current]="item.isActive ? 'page' : null"
+            type="button"
+          >
+            <img 
+              [src]="getIconPath(item.icon)" 
+              [alt]="getItemLabel(item.translationKey)"
+              class="sidebar__nav-icon"
+              aria-hidden="true"
+            >
+            <span 
+              class="sidebar__nav-text" 
+              [class.sidebar__nav-text--hidden]="isCollapsed"
+            >
+              {{ getItemLabel(item.translationKey) }}
+            </span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__user-profile">
+      <div class="sidebar__user-info" [class.sidebar__user-info--collapsed]="isCollapsed">
+        <img 
+          [src]="userProfile.avatar" 
+          [alt]="getLabel('user.avatar')"
+          class="sidebar__user-avatar"
+        >
+        <div class="sidebar__user-details" *ngIf="!isCollapsed">
+          <span class="sidebar__user-name">{{ userProfile.name }}</span>
+          <span class="sidebar__user-role">{{ userProfile.role }}</span>
+        </div>
+      </div>
+      
+      <button 
+        class="sidebar__logout"
+        (click)="onLogout()"
+        [attr.aria-label]="getLabel('user.logout')"
+        type="button"
+      >
+        <svg 
+          class="sidebar__logout-icon" 
+          width="16" 
+          height="16" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" 
+            stroke="currentColor" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </footer>
+</aside>

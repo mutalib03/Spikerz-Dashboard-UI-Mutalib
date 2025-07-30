@@ -1,0 +1,20 @@
+{
+  "navigation": {
+    "main": "Main navigation",
+    "toggle": "Toggle sidebar",
+    "dashboard": "Dashboard",
+    "alerts": "Alerts", 
+    "assets": "Assets",
+    "vulnerabilities": "Vulnerabilities",
+    "remediation": "Remediation",
+    "reports": "Reports",
+    "integrations": "Integrations",
+    "settings": "Settings",
+    "help": "Help"
+  },
+  "user": {
+    "avatar": "User avatar",
+    "logout": "Logout",
+    "profile": "User profile"
+  }
+}

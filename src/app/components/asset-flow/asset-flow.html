@@ -1,0 +1,143 @@
+
+ <h3 class="asset-flow__title">
+    {{ getTranslatedText('asset.flow.title', assetFlowData.title) }}
+  </h3>
+
+<div class="asset-flow">
+ 
+  
+  <div class="asset-flow__diagram">
+    <div class="asset-flow__nodes">
+     
+      <div class="asset-flow__node asset-flow__node--source">
+        <div class="asset-flow__node-container">
+          <img 
+            [src]="assetFlowData.nodes[0].icon" 
+            [alt]="assetFlowData.nodes[0].name"
+            class="asset-flow__node-icon"
+            aria-hidden="true"
+          >
+          <span class="asset-flow__node-name">{{ assetFlowData.nodes[0].name }}</span>
+        </div>
+      </div>
+
+     
+      <div class="asset-flow__connector">
+       
+<img 
+            src="arrow.svg" 
+            [alt]="assetFlowData.nodes[0].name"
+            class="asset-flow__node-icon"
+            aria-hidden="true"
+          >
+
+      </div>
+
+    
+      <div class="asset-flow__node asset-flow__node--intermediate">
+        <div class="asset-flow__node-container">
+          <img 
+            [src]="assetFlowData.nodes[1].icon" 
+            [alt]="assetFlowData.nodes[1].name"
+            class="asset-flow__node-icon"
+            aria-hidden="true"
+          >
+          <span class="asset-flow__node-name">{{ assetFlowData.nodes[1].name }}</span>
+        </div>
+      </div>
+
+
+      <div class="asset-flow__connector">
+       <img 
+            src="arrow.svg" 
+            [alt]="assetFlowData.nodes[0].name"
+            class="asset-flow__node-icon"
+            aria-hidden="true"
+          >
+      </div>
+
+      <div class="asset-flow__node asset-flow__node--intermediate">
+        <div class="asset-flow__node-container">
+          <img 
+            [src]="assetFlowData.nodes[2].icon" 
+            [alt]="assetFlowData.nodes[2].name"
+            class="asset-flow__node-icon"
+            aria-hidden="true"
+          >
+          <span class="asset-flow__node-name">{{ assetFlowData.nodes[2].name }}</span>
+        </div>
+      </div>
+<img 
+            src="2arrow.svg" 
+            [alt]="assetFlowData.nodes[0].name"
+            class="asset-flow__node-icon"
+            aria-hidden="true"
+          >
+      
+      <div class="asset-flow__branch">
+        
+
+     
+        <div class="asset-flow__destinations">
+          <div class="asset-flow__destination-node asset-flow__destination-node--top">
+            <div class="asset-flow__node-container">
+              <div class="asset-flow__node-content">
+                <img 
+                  [src]="assetFlowData.nodes[3].icon" 
+                  [alt]="assetFlowData.nodes[3].name"
+                  class="asset-flow__node-icon"
+                  aria-hidden="true"
+                >
+              
+              </div>
+              <div class="asset-flow__node-details">
+                <span class="asset-flow__node-name">{{ assetFlowData.nodes[3].name }}</span>
+                <span class="asset-flow__node-ip" *ngIf="assetFlowData.nodes[3].ipAddress">
+                  {{ assetFlowData.nodes[3].ipAddress }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="asset-flow__destination-node asset-flow__destination-node--bottom">
+            <div class="asset-flow__node-container">
+              <div class="asset-flow__node-content">
+                <img 
+                  [src]="assetFlowData.nodes[4].icon" 
+                  [alt]="assetFlowData.nodes[4].name"
+                  class="asset-flow__node-icon"
+                  aria-hidden="true"
+                >
+            
+              </div>
+              <div class="asset-flow__node-details">
+                <span class="asset-flow__node-name">{{ assetFlowData.nodes[4].name }}</span>
+                <span class="asset-flow__node-ip" *ngIf="assetFlowData.nodes[4].ipAddress">
+                  {{ assetFlowData.nodes[4].ipAddress }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ <div class="asset-flow__legend">
+      <div class="asset-flow__legend-item">
+        <img src="red.svg">
+        <span class="asset-flow__legend-text-red">Critical</span>
+      </div>
+      <div class="asset-flow__legend-item">
+        <img src="yellow.svg">
+        <span class="asset-flow__legend-text-yellow">Warning</span>
+      </div>
+      <div class="asset-flow__legend-item">
+          <img src="green.svg">
+        <span class="asset-flow__legend-text-green">Safe</span>
+      </div>
+    </div>
+
+
+  </div>
+  
+
+</div>

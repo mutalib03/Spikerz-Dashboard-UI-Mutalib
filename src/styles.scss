@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+
+  --color-primary: #10B981;
+  --color-primary-hover: #059669;
+  --color-primary-light: #D1FAE5;
+  
+  --color-surface-primary:  white;
+  --color-surface-hover: #F9FAFB;
+  
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  
+  --color-border-light: #E5E7EB;
+  --color-border-medium: #D1D5DB;
+  
+  --color-focus: #3B82F6;
+  --font-size-xs: 0.75rem;    
+  --font-size-sm: 0.875rem;   
+  --font-size-base: 1rem;     
+  --font-size-lg: 1.125rem;   
+  
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  
+
+  --z-index-sidebar: 1000;
+}

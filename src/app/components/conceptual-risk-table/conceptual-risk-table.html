@@ -1,0 +1,190 @@
+ <h3 class="risk-summary-header">
+      {{ 'Risk Summary'}}
+    </h3>
+<div class="contextual-risk-container">
+  
+
+
+    <div class="contextual-risk__table-container">
+      
+      <table class="contextual-risk__table" role="table">
+        <thead class="contextual-risk__table-header">
+          <tr class="contextual-risk__table-row" role="row">
+            <th 
+              class="contextual-risk__table-heading contextual-risk__table-heading--asset" 
+              role="columnheader"
+            >
+              {{ getTranslatedText('table.asset', 'Asset') }}
+            </th>
+            <th 
+              class="contextual-risk__table-heading contextual-risk__table-heading--risk" 
+              role="columnheader"
+            >
+              {{ getTranslatedText('table.contextual.risk', 'Contextual Risk') }}
+            </th>
+          </tr>
+        </thead>
+        
+        <tbody class="contextual-risk__table-body">
+          <tr 
+            *ngFor="let asset of contextualRiskData.assets; trackBy: trackByAssetId" 
+            class="contextual-risk__table-row contextual-risk__table-row--data"
+            role="row"
+          >
+            <td 
+              class="contextual-risk__table-cell contextual-risk__table-cell--asset" 
+              role="gridcell"
+            >
+              <div class="contextual-risk__asset-info">
+                <img 
+                  [src]="asset.icon" 
+                  [alt]="asset.name"
+                  class="contextual-risk__asset-icon"
+                  aria-hidden="true"
+                >
+                <div class="contextual-risk__asset-details">
+                  <span class="contextual-risk__asset-name">{{ asset.name }}</span>
+                  <span class="contextual-risk__asset-ip">{{ asset.ipAddress }}</span>
+                </div>
+              </div>
+            </td>
+            
+            <td 
+              class="contextual-risk__table-cell contextual-risk__table-cell--risk" 
+              role="gridcell"
+            >
+              <span 
+                class="contextual-risk__badge"
+                [class]="getRiskBadgeClass(asset.riskLevel)"
+                [attr.aria-label]="getRiskLabelText(asset.riskLevel) + ' risk level'"
+              >
+                {{ getRiskLabelText(asset.riskLevel) }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>  
+
+
+       <div class="contextual-risk__pagination" *ngIf="contextualRiskData.pagination.totalPages > 1">
+      <button 
+        class="contextual-risk__pagination-button contextual-risk__pagination-button--previous"
+        (click)="onPreviousPage()"
+        [disabled]="contextualRiskData.pagination.currentPage === 1"
+        [attr.aria-label]="getTranslatedText('pagination.previous', 'Previous page')"
+        type="button"
+      >
+
+      <img src="chevron_right (1).svg"  class="contextual-risk__pagination-icon" />
+    
+      </button>
+      
+      <span class="contextual-risk__pagination-info">
+        {{ contextualRiskData.pagination.showingText }}
+      </span>
+      
+      <button 
+        class="contextual-risk__pagination-button contextual-risk__pagination-button--next"
+        (click)="onNextPage()"
+        [disabled]="contextualRiskData.pagination.currentPage === contextualRiskData.pagination.totalPages"
+        [attr.aria-label]="getTranslatedText('pagination.next', 'Next page')"
+        type="button"
+      >
+             <img src="chevron_right.svg"  class="contextual-risk__pagination-icon" />
+      </button>
+    </div>
+
+
+    </div>
+
+
+  <div class="risk-summary">
+    <h3 class="risk-summary__title">
+      {{ getTranslatedText('contextual.risk.title', 'Contextual Risk') }}
+    </h3>
+    
+    <div class="risk-summary__content">
+      
+      <div class="risk-summary__chart">
+        <svg 
+          class="risk-chart" 
+          width="120" 
+          height="120" 
+          viewBox="0 0 120 120"
+          role="img"
+          [attr.aria-label]="'Risk distribution chart showing ' + riskSummary.critical + ' critical risks out of ' + riskSummary.total + ' total'"
+        >
+          
+          <circle
+            cx="60"
+            cy="60"
+            r="45"
+            fill="none"
+            stroke="#f1f5f9"
+            stroke-width="8"
+          />
+          
+        
+          <circle
+            cx="60"
+            cy="60"
+            r="45"
+            fill="none"
+            stroke="#dc2626"
+            stroke-width="8"
+            stroke-dasharray="283"
+            [attr.stroke-dashoffset]="getDashOffset('critical')"
+            transform="rotate(-90 60 60)"
+            class="risk-chart__segment risk-chart__segment--critical"
+          />
+          
+
+          <text
+            x="60"
+            y="60"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            class="risk-chart__center-text"
+            fill="#64748b"
+            font-size="32"
+            font-weight="600"
+          >
+            {{ riskSummary.critical }}
+          </text>
+        </svg>
+      </div>
+   
+      <div class="risk-summary__legend">
+        <div class="risk-legend">
+          <div class="risk-legend__item risk-legend__item--critical">
+            <span class="risk-legend__indicator"></span>
+            <span class="risk-legend__count">{{ riskSummary.critical }}</span>
+            <span class="risk-legend__label">Critical</span>
+          </div>
+          
+          <div class="risk-legend__item risk-legend__item--high">
+            <span class="risk-legend__indicator"></span>
+            <span class="risk-legend__count">{{ riskSummary.high }}</span>
+            <span class="risk-legend__label">High</span>
+          </div>
+          
+          <div class="risk-legend__item risk-legend__item--medium">
+            <span class="risk-legend__indicator"></span>
+            <span class="risk-legend__count">{{ riskSummary.medium }}</span>
+            <span class="risk-legend__label">Medium</span>
+          </div>
+          
+          <div class="risk-legend__item risk-legend__item--low">
+            <span class="risk-legend__indicator"></span>
+            <span class="risk-legend__count">{{ riskSummary.low }}</span>
+            <span class="risk-legend__label">Low</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  </div>
