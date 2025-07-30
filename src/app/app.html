@@ -1,48 +1,15 @@
+
 <div class="app-layout">
 
-  <button 
-    class="mobile-menu-button"
-    [class.mobile-menu-button--active]="isMobileSidebarOpen"
-    (click)="onToggleMobileSidebar()"
-    [attr.aria-label]="'Toggle mobile menu'"
-    [attr.aria-expanded]="isMobileSidebarOpen"
-    type="button"
-  >
-    <svg 
-      width="24" 
-      height="24" 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path 
-        [attr.d]="isMobileSidebarOpen ? 'M18 6L6 18M6 6l12 12' : 'M3 12h18M3 6h18M3 18h18'"
-        stroke="currentColor" 
-        stroke-width="2" 
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  </button>
-
   <app-sidebar 
-    (navigationChange)="onNavigationChange($event)"
-    (sidebarToggle)="onSidebarToggle($event)"
-    (mobileSidebarToggle)="onMobileSidebarToggle($event)"
-  ></app-sidebar>
+    (sidebarToggle)="onSidebarToggle($event)">
+  </app-sidebar>
   
 
   <main class="app-content" 
-        [class.app-content--collapsed]="isSidebarCollapsed"
-        [class.app-content--mobile-sidebar-open]="isMobileSidebarOpen">
+        [class.app-content--collapsed]="isSidebarCollapsed">
     <router-outlet></router-outlet>
   </main>
+</div>
   
 
-  <div 
-    class="sidebar-overlay" 
-    [class.sidebar-overlay--visible]="isMobileSidebarOpen"
-    (click)="onCloseMobileSidebar()"
-    [attr.aria-hidden]="!isMobileSidebarOpen"
-  ></div>
-</div>

@@ -27,8 +27,7 @@
 
   @media (max-width: 1200px) {
     &__layout {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-20);
+   flex-direction: column;
       height: auto;
     }
 

@@ -40,27 +40,29 @@
         class="sidebar__nav-item"
         role="listitem"
       >
-        <button
-          class="sidebar__nav-link"
-          [class.sidebar__nav-link--active]="item.isActive"
-          (click)="onNavigationItemClick(item)"
-          [attr.aria-label]="getItemLabel(item.translationKey)"
-          [attr.aria-current]="item.isActive ? 'page' : null"
-          type="button"
-        >
-          <img 
-            [src]="getIconPath(item.icon)" 
-            [alt]="getItemLabel(item.translationKey)"
-            class="sidebar__nav-icon"
-            aria-hidden="true"
-          >
-          <span 
-            class="sidebar__nav-text" 
-            [class.sidebar__nav-text--hidden]="isCollapsed"
-          >
-            {{ getItemLabel(item.translationKey) }}
-          </span>
-        </button>
+     
+      <button
+      class="sidebar__nav-link"
+     [class.sidebar__nav-link--active]="item.isActive"
+     (click)="onNavigationItemClick(item)"
+     [attr.aria-label]="getItemLabel(item.translationKey)"
+     [attr.aria-current]="item.isActive ? 'page' : null"
+     [attr.data-tooltip]="getItemLabel(item.translationKey)"
+     type="button"
+>
+  <img 
+    [src]="getIconPath(item.icon)" 
+    [alt]="getItemLabel(item.translationKey)"
+    class="sidebar__nav-icon"
+    aria-hidden="true"
+  >
+  <span 
+    class="sidebar__nav-text" 
+    [class.sidebar__nav-text--hidden]="isCollapsed"
+  >
+    {{ getItemLabel(item.translationKey) }}
+  </span>
+</button>
       </li>
     </ul>
   </nav>
@@ -75,13 +77,14 @@
           role="listitem"
         >
           <button
-            class="sidebar__nav-link"
-            [class.sidebar__nav-link--active]="item.isActive"
-            (click)="onNavigationItemClick(item)"
-            [attr.aria-label]="getItemLabel(item.translationKey)"
-            [attr.aria-current]="item.isActive ? 'page' : null"
-            type="button"
-          >
+  class="sidebar__nav-link"
+  [class.sidebar__nav-link--active]="item.isActive"
+  (click)="onNavigationItemClick(item)"
+  [attr.aria-label]="getItemLabel(item.translationKey)"
+  [attr.aria-current]="item.isActive ? 'page' : null"
+  [attr.data-tooltip]="getItemLabel(item.translationKey)"
+  type="button"
+>
             <img 
               [src]="getIconPath(item.icon)" 
               [alt]="getItemLabel(item.translationKey)"
@@ -113,11 +116,12 @@
       </div>
       
       <button 
-        class="sidebar__logout"
-        (click)="onLogout()"
-        [attr.aria-label]="getLabel('user.logout')"
-        type="button"
-      >
+  class="sidebar__logout"
+  (click)="onLogout()"
+  [attr.aria-label]="getLabel('user.logout')"
+  [attr.data-tooltip]="getLabel('user.logout')"
+  type="button"
+>
         <svg 
           class="sidebar__logout-icon" 
           width="16" 

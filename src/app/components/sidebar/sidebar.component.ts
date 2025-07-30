@@ -4,35 +4,34 @@ import { Router } from '@angular/router';
 import { NAVIGATION_ITEMS, BOTTOM_NAVIGATION_ITEMS, NAVIGATION_LABELS } from '../../constants/sidebar.constants';
 import { UserProfile, LabelKey, NavigationItem } from '../../models/sidebar.types';
 
-
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  @Output() navigationChange = new EventEmitter<string>();
   @Output() sidebarToggle = new EventEmitter<boolean>();
-  @Output() mobileSidebarToggle = new EventEmitter<boolean>();
 
   protected readonly navigationItems = NAVIGATION_ITEMS;
   protected readonly bottomNavigationItems = BOTTOM_NAVIGATION_ITEMS;
   
   protected isCollapsed = false;
   protected isMobile = false;
-  protected isMobileSidebarOpen = false;
   protected userProfile: UserProfile = {
     name: 'Mutalib',
     role: 'Adebayo',
-    avatar: '/assets/images/default-avatar.png'
+    avatar: 'MENU10.svg'
   };
 
   constructor(private readonly router: Router) {
     this.checkScreenSize();
+    if (window.innerWidth <= 768) {
+      this.isCollapsed = true;
+      this.isMobile = true;
+      setTimeout(() => this.sidebarToggle.emit(this.isCollapsed), 0);
+    }
   }
 
   @HostListener('window:resize')
@@ -54,22 +53,11 @@ export class SidebarComponent {
 
   protected onNavigationItemClick(item: NavigationItem): void {
     this.updateActiveState(item.id);
-    this.navigationChange.emit(item.id);
     this.router.navigate([item.route]);
-    
-
-    if (this.isMobile && this.isMobileSidebarOpen) {
-      this.isMobileSidebarOpen = false;
-      this.mobileSidebarToggle.emit(this.isMobileSidebarOpen);
-    }
   }
 
   protected onToggleSidebar(): void {
-    if (this.isMobile) {
-      
-      this.isMobileSidebarOpen = !this.isMobileSidebarOpen;
-      this.mobileSidebarToggle.emit(this.isMobileSidebarOpen);
-    } else {
+    if (!this.isMobile) {
       this.isCollapsed = !this.isCollapsed;
       this.sidebarToggle.emit(this.isCollapsed);
     }
@@ -80,13 +68,14 @@ export class SidebarComponent {
   }
 
   private checkScreenSize(): void {
+    const wasMobile = this.isMobile;
     this.isMobile = window.innerWidth <= 768;
 
-    if (!this.isMobile) {
-      this.isMobileSidebarOpen = false;
-      this.mobileSidebarToggle.emit(false);
-    } else {
-      this.isCollapsed = false; 
+    if (this.isMobile) {
+      this.isCollapsed = true;
+      this.sidebarToggle.emit(this.isCollapsed);
+    } else if (wasMobile) {
+      this.sidebarToggle.emit(this.isCollapsed);
     }
   }
 

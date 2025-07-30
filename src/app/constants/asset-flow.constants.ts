@@ -1,6 +1,6 @@
 export const ASSET_FLOW_LABELS = {
-  TITLE: 'Lorem Lorem Lorem'
-} as const;
+  TITLE: 'System Architecture'
+} as const; 
 
 export const ASSET_NODE_TYPES = {
   SOURCE: 'source',
