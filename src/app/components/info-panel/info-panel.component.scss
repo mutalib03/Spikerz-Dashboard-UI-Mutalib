@@ -1,22 +1,36 @@
+
 $mobile-breakpoint: 768px;
 
 .info-panel {
-  background: var(--background-primary, #ffffff);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  border: 1px solid var(--border-color, #e5e7eb);
-  max-width: 400px;
+  background:  #ffffff;
+  padding: 20px 30px 100px 30px;
+  border: 1px solid var(--border-color, #ebebec);
+  min-height: 900px;
+  max-width: 320px;
+   max-height: 100vh;       
+  overflow-y: auto;         
+  overflow-x: hidden;      
+  border-radius: 15px;
+  box-shadow: 0px 1px 2px 0px #0000001A;
+
+  scrollbar-width: none;    
+  -ms-overflow-style: none; 
   
+  &::-webkit-scrollbar {   
+    display: none;
+  }
+
   @media (max-width: $mobile-breakpoint) {
     padding: 1rem;
     border-radius: 0;
     border-left: none;
     border-right: none;
+     max-height: 100vh;
   }
 
   &__section {
-    &:not(:last-child) {
-      margin-bottom: 2rem;
+   &:nth-child(1) {
+    margin-bottom: 2rem;
       
       @media (max-width: $mobile-breakpoint) {
         margin-bottom: 1.5rem;
@@ -24,13 +38,16 @@ $mobile-breakpoint: 768px;
     }
   }
 
+
+
   &__title {
     font-size: 20px;
+     font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 700;
     color: var(--text-success, #02983E);
     margin: 0 0 1rem 0;
-    line-height: 1.4;
-    
+    line-height: 22px;
+    letter-spacing: 1%;
     @media (max-width: $mobile-breakpoint) {
       font-size: 1rem;
       margin-bottom: 0.75rem;
@@ -38,7 +55,8 @@ $mobile-breakpoint: 768px;
   }
 
   &__description {
-    font-size: 14px;
+    font-size: 12px;
+     font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
     color: var(--text-secondary, #525D73);
     margin: 0;
@@ -51,6 +69,8 @@ $mobile-breakpoint: 768px;
       margin-bottom: 1rem;
     }
     
+
+
     @media (max-width: $mobile-breakpoint) {
       font-size: 0.8125rem;
       line-height: 1.5;
@@ -66,7 +86,7 @@ $mobile-breakpoint: 768px;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0rem;
     
     @media (max-width: $mobile-breakpoint) {
       gap: 0.625rem;
@@ -76,14 +96,14 @@ $mobile-breakpoint: 768px;
   &__metadata-item {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+  
     padding: 0.5rem 0;
-    
-    gap: 1rem;
+      font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    gap: 35px;
     
     &:last-child {
      border-bottom: 1px solid var(--border-light, #E0E2E7);
-     
+    
     }
     
 &:first-child {
@@ -125,8 +145,8 @@ $mobile-breakpoint: 768px;
     color: var(--text-secondary, #6b7280);
     margin: 0;
     min-width: 0;
-    flex: 1;
-    text-align: right;
+
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -242,5 +262,203 @@ $mobile-breakpoint: 768px;
     &__checkmark {
       color: var(--text-success-dark, #10b981);
     }
+  }
+}
+
+.bottom {
+
+  margin-bottom: 30px;
+}
+
+
+.info-panel__remediation {
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 16px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+box-shadow: 0px 1px 2px 0px #0000001A;
+ 
+&:last-child {
+  margin-bottom: 40px;
+}
+
+  &:hover {
+    border-color: #D1D5DB;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+
+}
+
+.info-panel__remediation-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #FAFAFA;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.info-panel__remediation-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #DBEAFE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  
+
+}
+.info-panel__remediation-heading {
+
+  margin-top: 0;
+  line-height: 22px;
+  font-weight: 700;
+  font-size:15px;
+  color: #525D73;
+   font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.info-panel__remediation-icon-container {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+width: 45%;
+}
+
+.info-panel__remediation-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 17px;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-panel__remediation-titles {
+  margin-bottom: 8px;
+}
+
+.info-panel__remediation-title {
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #404A60;
+  margin: 0 0 2px 0;
+}
+
+.info-panel__remediation-subtitle {
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 9.45px;
+  font-weight: 500;
+  line-height: 10px;
+  color: #667085;
+  margin: 0;
+}
+
+.info-panel__remediation-separator {
+  width: 1px;
+  height: 53px;
+  background: #858D9D;
+  margin: 8px 0;
+}
+
+.info-panel__remediation-description {
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #6B7280;
+  margin: 0;
+  
+}
+
+.info-panel__remediation-expanded-content {
+  border-top: 1px solid #F3F4F6;
+}
+
+.info-panel__remediation-expanded-text {
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #404A60;
+  letter-spacing: 1%;
+  margin-bottom: 0px;
+}  
+
+
+
+@media (max-width: $mobile-breakpoint) {
+  .info-panel__remediation-header {
+    gap: 8px;
+  }
+  
+  .info-panel__remediation-icon {
+    width: 40px;
+    height: 40px;
+    
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  .info-panel__remediation-title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  
+  .info-panel__remediation-subtitle,
+  .info-panel__remediation-description,
+  .info-panel__remediation-expanded-text {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  
+  .info-panel__remediation-separator {
+    height: 30px;
+    margin: 6px 0;
+  }
+}
+
+
+.info-panel__remediation-main-heading {
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 22px;
+  font-weight: 700;
+  font-size:15px;
+  color: #525D73;
+  margin: 16px 0;
+  line-height: 22px;
+  letter-spacing: 1%;
+}
+
+
+.info-panel__remediation {
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 12px; 
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  &:hover {
+    border-color: #D1D5DB;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  &--expanded {
+    border-color: #3B82F6;
   }
 }

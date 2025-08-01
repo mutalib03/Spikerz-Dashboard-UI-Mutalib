@@ -3,13 +3,15 @@
   display: flex;
   gap: 24px;
   height: 100%;
+  
 }
 
 .risk-summary-header {
  font-size: 20px;
     font-weight: 700;
     color: #02983E;
-}
+}  
+
 
 .risk-summary {
   background-color: #ffffff;
@@ -154,13 +156,7 @@
     letter-spacing: 0.05em;
     line-height:18px
     
-    &--asset {
-      width: 60%;
-    }
 
-    &--risk {
-      width: 40%;
-    }
   }
 
   &__table-body {

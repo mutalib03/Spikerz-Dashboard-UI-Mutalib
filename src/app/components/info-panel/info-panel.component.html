@@ -15,7 +15,7 @@
     </h2>
     
    
-    <p class="info-panel__description" *ngIf="data.metadata.content">
+    <p class="info-panel__description bottom" *ngIf="data.metadata.content">
       {{ data.metadata.content }}
     </p>
 
@@ -59,4 +59,42 @@
       </dl>
     </div>
   </section>
+<section class="info-panel__section">
+  <h2 class="info-panel__remediation-main-heading">Remediations</h2>
+  
+
+  <div *ngFor="let remediation of remediationItems; let i = index; trackBy: trackByRemediationId" 
+       class="info-panel__remediation" 
+       (click)="toggleRemediationExpansion(i)"
+       [class.info-panel__remediation--expanded]="remediation.isExpanded">
+      <h2 class="info-panel__remediation-heading">{{remediation.id}}</h2>
+    <div class="info-panel__remediation-header">
+      
+      <div class="info-panel__remediation-icon-container">
+        <div class="info-panel__remediation-icon">
+          <img [src]="remediation.icon" alt="Server" aria-hidden="true">
+        </div>
+        <div class="info-panel__remediation-titles">
+          <h3 class="info-panel__remediation-title">{{ remediation.title }}</h3>
+          <p class="info-panel__remediation-subtitle">{{ remediation.subtitle }}</p>
+        </div>
+      </div>
+      
+      <div class="info-panel__remediation-content">
+        <div class="info-panel__remediation-separator"></div>
+        
+        <p class="info-panel__remediation-description">
+          {{ remediation.description }}
+        </p>
+      </div>
+    </div>
+    
+    <div class="info-panel__remediation-expanded-content" 
+         *ngIf="remediation.isExpanded">
+      <p class="info-panel__remediation-expanded-text">
+        {{ remediation.expandedText }}
+      </p>
+    </div>
+  </div>
+</section>
 </div>

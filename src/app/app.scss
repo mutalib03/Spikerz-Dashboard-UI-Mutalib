@@ -3,34 +3,15 @@
   display: flex;
   min-height: 100vh;
   position: relative;
+  gap:35px
 }
 
 .app-content {
   flex: 1;
   min-height: 100vh;
-  background-color: var(--color-background-primary, #f8fafc);
+
   transition: margin-left 0.3s ease-in-out;
   
-  
-  margin-left: 240px;
-
-  &--collapsed {
-    margin-left: 60px;
-  }
-
-  @media (max-width: 768px) {
-    margin-left: 60px !important;
- 
-    &--collapsed {
-      margin-left: 60px !important;
-    }
-  }
-  
-
-  @media (max-width: 480px) {
-    margin-left: 60px !important;
-    padding: 16px 8px;
-  }
 }
 
 

@@ -2,6 +2,16 @@
 export type MetadataValueType = 'text' | 'date' | 'boolean' | 'status';
 
 
+export type RemediationItem = {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  expandedText: string;
+  icon: string;
+  isExpanded: boolean;
+};
+
 export type MetadataItem = {
   key: string;
   value: string | boolean | Date;

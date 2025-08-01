@@ -1,98 +1,102 @@
-import { LabelKey, NavigationItem } from "../models/sidebar.types";
 
 
-export const NAVIGATION_ITEMS: NavigationItem[] = [
+export const SIDEBAR_CONFIG = {
+  WIDTH: 200,
+  COLLAPSED_WIDTH: 60,
+  MOBILE_BREAKPOINT: 768,
+  ANIMATION_DURATION: 300
+} as const;
+
+
+export const NAVIGATION_ITEMS_TEMPLATE = [
   {
     id: 'dashboard',
     translationKey: 'navigation.dashboard',
     icon: 'MENU.svg',
-    route: '/dashboard',
-    isActive: false
+    route: '/dashboard'
   },
   {
     id: 'alerts',
-    translationKey: 'navigation.alerts',
+    translationKey: 'navigation.alerts', 
     icon: 'MENU2.svg',
-    route: '/alerts',
-    isActive: false
+    route: '/alerts'
   },
   {
     id: 'assets',
     translationKey: 'navigation.assets',
-    icon: 'MENU3.svg',
-    route: '/assets',
-    isActive: false
-  },
-  {
-    id: 'vulnerabilities',
-    translationKey: 'navigation.vulnerabilities',
-    icon: 'MENU4.svg',
-    route: '/vulnerabilities',
-    isActive: true
-  },
-  {
-    id: 'remediation',
-    translationKey: 'navigation.remediation',
-    icon: 'MENU5.svg',
-    route: '/remediation',
-    isActive: false
+    icon: 'MENU3.svg', 
+    route: '/assets'
   },
   {
     id: 'reports',
     translationKey: 'navigation.reports',
-    icon: 'MENU6.svg',
-    route: '/reports',
-    isActive: false
+    icon: 'MENU11.svg',
+    route: '/reports'
   },
   {
-    id: 'integrations',
-    translationKey: 'navigation.integrations',
-    icon: 'MENU11.svg',
-    route: '/integrations',
-    isActive: false
+    id: 'analytics',
+    translationKey: 'navigation.analytics',
+    icon: 'MENU5.svg',
+    route: '/analytics'
+  },
+  {
+    id: 'monitoring',
+    translationKey: 'navigation.monitoring',
+    icon: 'MENU6.svg',
+    route: '/monitoring'
+  },
+  {
+    id: 'compliance',
+    translationKey: 'navigation.compliance',
+    icon: 'MENU8.svg',
+    route: '/compliance'
   }
-];
+] as const;
 
-export const BOTTOM_NAVIGATION_ITEMS: NavigationItem[] = [
+export const BOTTOM_NAVIGATION_ITEMS_TEMPLATE = [
   {
     id: 'settings',
     translationKey: 'navigation.settings',
     icon: 'MENU8.svg',
-    route: '/settings',
-    isActive: false
+    route: '/settings'
   },
   {
     id: 'help',
     translationKey: 'navigation.help',
-    icon: 'MENU9.svg',
-    route: '/help',
-    isActive: false
+    icon: 'MENU9.svg', 
+    route: '/help'
   }
-];
+] as const;
 
-export const NAVIGATION_LABELS: Record<LabelKey, string> = {
-  'navigation.main': 'Main navigation',
-  'navigation.toggle': 'Toggle sidebar',
-  'navigation.dashboard': 'Dashboard',
-  'navigation.alerts': 'Alerts',
-  'navigation.assets': 'Assets',
-  'navigation.vulnerabilities': 'Vulnerabilities',
-  'navigation.remediation': 'Remediation',
-  'navigation.reports': 'Reports',
-  'navigation.integrations': 'Integrations',
-  'navigation.settings': 'Settings',
-  'navigation.help': 'Help',
-  'user.avatar': 'User avatar',
-  'user.logout': 'Logout',
-  'user.profile': 'User profile'
-};
 
-export const SIDEBAR_CONFIG = {
-  WIDTH: 240,
-  COLLAPSED_WIDTH: 10,
-  TRANSITION_DURATION: 300,
-  MOBILE_BREAKPOINT: 768,
-  ITEM_HEIGHT: 48,
-  PADDING: 16,
-  BORDER_RADIUS: 8
+export const DEFAULT_ACTIVE_ITEM = 'reports' as const;
+
+
+export const NAVIGATION_ITEMS = NAVIGATION_ITEMS_TEMPLATE;
+export const BOTTOM_NAVIGATION_ITEMS = BOTTOM_NAVIGATION_ITEMS_TEMPLATE;
+
+
+export const NAVIGATION_LABELS = {
+  
+  'navigation.main': 'Main Navigation',
+  'navigation.toggle': 'Toggle Sidebar',
+  'navigation.dashboard': 'Lorem', // Exact from Figma
+  'navigation.alerts': 'Lorem',    // Exact from Figma
+  'navigation.assets': 'Lorem',    // Exact from Figma  
+  'navigation.reports': 'Lorem',   // Exact from Figma
+  'navigation.analytics': 'Lorem', // Exact from Figma
+  'navigation.monitoring': 'Lorem', // Exact from Figma
+  'navigation.compliance': 'Lorem', // Exact from Figma
+  
+  // Bottom navigation
+  'navigation.settings': 'Lorem', // Exact from Figma
+  'navigation.help': 'Lorem',     // Exact from Figma
+  
+  // User profile
+  'user.avatar': 'User Avatar',
+  'user.logout': 'Logout'
 } as const;
+
+// Type definitions following coding standards
+export type NavigationItemId = typeof NAVIGATION_ITEMS[number]['id'] | typeof BOTTOM_NAVIGATION_ITEMS[number]['id'];
+export type LabelKey = keyof typeof NAVIGATION_LABELS;

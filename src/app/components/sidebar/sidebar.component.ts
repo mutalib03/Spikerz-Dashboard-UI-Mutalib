@@ -1,7 +1,12 @@
 import { Component, Output, EventEmitter, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { NAVIGATION_ITEMS, BOTTOM_NAVIGATION_ITEMS, NAVIGATION_LABELS } from '../../constants/sidebar.constants';
+import { 
+  NAVIGATION_ITEMS_TEMPLATE, 
+  BOTTOM_NAVIGATION_ITEMS_TEMPLATE, 
+  NAVIGATION_LABELS, 
+  DEFAULT_ACTIVE_ITEM 
+} from '../../constants/sidebar.constants';
 import { UserProfile, LabelKey, NavigationItem } from '../../models/sidebar.types';
 
 @Component({
@@ -14,18 +19,21 @@ import { UserProfile, LabelKey, NavigationItem } from '../../models/sidebar.type
 export class SidebarComponent {
   @Output() sidebarToggle = new EventEmitter<boolean>();
 
-  protected readonly navigationItems = NAVIGATION_ITEMS;
-  protected readonly bottomNavigationItems = BOTTOM_NAVIGATION_ITEMS;
+  protected navigationItems: NavigationItem[] = [];
+  protected bottomNavigationItems: NavigationItem[] = [];
   
   protected isCollapsed = false;
   protected isMobile = false;
+  
+
   protected userProfile: UserProfile = {
-    name: 'Mutalib',
-    role: 'Adebayo',
-    avatar: 'MENU10.svg'
+    name: 'Lorem',
+    role: 'Lorem',   
+    avatar: 'MENU10.svg' 
   };
 
   constructor(private readonly router: Router) {
+    this.initializeNavigationItems();
     this.checkScreenSize();
     if (window.innerWidth <= 768) {
       this.isCollapsed = true;
@@ -65,6 +73,19 @@ export class SidebarComponent {
 
   protected onLogout(): void {
     this.router.navigate(['/login']);
+  }
+
+  private initializeNavigationItems(): void {
+
+    this.navigationItems = NAVIGATION_ITEMS_TEMPLATE.map(item => ({
+      ...item,
+      isActive: item.id === DEFAULT_ACTIVE_ITEM
+    }));
+    
+    this.bottomNavigationItems = BOTTOM_NAVIGATION_ITEMS_TEMPLATE.map(item => ({
+      ...item,
+      isActive: false
+    }));
   }
 
   private checkScreenSize(): void {

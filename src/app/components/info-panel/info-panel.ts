@@ -12,6 +12,8 @@ import { INFO_PANEL_TRANSLATION_KEYS, METADATA_VALUE_TYPES } from '../../constan
   styleUrls: ['./info-panel.component.scss']
 })
 export class InfoPanel {
+
+  protected isRemediationExpanded = false;
   @Input() data: InfoPanelData = {
     description: {
       title: 'Description',
@@ -72,6 +74,45 @@ export class InfoPanel {
   protected getTranslatedText(key: string, fallback: string): string {
     return fallback;
   }
+
+protected toggleRemediationExpansion(index: number): void {
+  this.remediationItems[index].isExpanded = !this.remediationItems[index].isExpanded;
+}
+
+protected trackByRemediationId(index: number, item: any): string {
+  return item.id;
+}
+
+
+protected remediationItems = [
+  {
+    id: 'remediation-1',
+    title: 'Server',
+    subtitle: 'Server',
+    description: 'Lorem Ipsum Dolor Sit Amet Consectetur.',
+    expandedText: 'Lorem Ipsum Dolor Sit Amet Consectetur. Nunc Vitae Tortor Convallis Vitae Arcu. Magna.',
+    icon: 'oad balancer.svg',
+    isExpanded: false
+  },
+  {
+    id: 'remediation-2', 
+    title: 'Server',
+    subtitle: 'Server',
+    description: 'Lorem Ipsum Dolor Sit Amet Consectetur.',
+    expandedText: 'Lorem Ipsum Dolor Sit Amet Consectetur. Nunc Vitae Tortor Convallis Vitae Arcu. Magna.',
+    icon: 'oad balancer.svg',
+    isExpanded: false
+  },
+  {
+    id: 'remediation-3',
+    title: 'Server', 
+    subtitle: 'Server',
+    description: 'Lorem Ipsum Dolor Sit Amet Consectetur.',
+    expandedText: 'Lorem Ipsum Dolor Sit Amet Consectetur. Nunc Vitae Tortor Convallis Vitae Arcu. Magna.',
+    icon: 'oad balancer.svg',
+    isExpanded: false
+  }
+];
 
   protected formatValue(item: MetadataItem): string {
     switch (item.type) {

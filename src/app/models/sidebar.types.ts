@@ -1,3 +1,10 @@
+
+export type UserProfile = {
+  name: string;
+  role: string;
+  avatar: string;
+};
+
 export type NavigationItem = {
   id: string;
   translationKey: string;
@@ -6,34 +13,30 @@ export type NavigationItem = {
   isActive: boolean;
 };
 
-export type UserProfile = {
-  name: string;
-  role: string;
-  avatar: string;
-};
-
-export type SidebarState = {
-  isCollapsed: boolean;
-  isMobileOpen: boolean;
-};
-
-export type NavigationEvent = {
-  itemId: string;
-  route: string;
-};
-
 export type LabelKey = 
   | 'navigation.main'
   | 'navigation.toggle'
   | 'navigation.dashboard'
   | 'navigation.alerts'
   | 'navigation.assets'
-  | 'navigation.vulnerabilities'
-  | 'navigation.remediation'
   | 'navigation.reports'
-  | 'navigation.integrations'
+  | 'navigation.analytics'
+  | 'navigation.monitoring'
+  | 'navigation.compliance'
   | 'navigation.settings'
   | 'navigation.help'
   | 'user.avatar'
-  | 'user.logout'
-  | 'user.profile';
+  | 'user.logout';
+
+export type SidebarState = {
+  isCollapsed: boolean;
+  isMobile: boolean;
+  isMobileSidebarOpen: boolean;
+};
+
+export type SidebarConfig = {
+  readonly WIDTH: number;
+  readonly COLLAPSED_WIDTH: number;
+  readonly MOBILE_BREAKPOINT: number;
+  readonly ANIMATION_DURATION: number;
+};
